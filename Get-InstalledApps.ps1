@@ -12,7 +12,7 @@ if($Arch -eq 32 ){
 	[Array]$Apps64 = @()
 	$Apps64 += Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*' | Where-Object{$_.DisplayName -like "*$App*"} # 64 Bit
 	Return $Apps64
-} else {
+} elseif {
 	[Array]$AppsAll = @()
 	$AppsAll += Get-ItemProperty 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*' | Where-Object{$_.DisplayName -like "*$App*"} # 32 Bit
 	$AppsAll += Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*' | Where-Object{$_.DisplayName -like "*$App*"} # 64 Bit
